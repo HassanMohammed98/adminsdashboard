@@ -3,6 +3,7 @@ import libraryStore from "../LibraryStore";
 import BookDisp from "./BookDisp";
 import { observer } from "mobx-react";
 import CreateBookModal from "./Modal/CreateBookModal";
+import Nav from "./Nav";
 
 const BooksList = () => {
   const booksDisplayed = libraryStore.bookslist.map((book) => (
@@ -10,6 +11,7 @@ const BooksList = () => {
   ));
   return (
     <div>
+      <Nav />
       {booksDisplayed}
       <CreateBookModal />
     </div>

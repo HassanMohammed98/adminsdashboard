@@ -9,13 +9,15 @@ class LibraryStore {
   constructor() {
     makeAutoObservable(this);
   }
-  addBook = (book) => {
+  addBook = (book, genres) => {
     let newID;
     if (this.bookslist.length == 0) {
       newID = 1;
     } else {
       newID = this.bookslist[this.bookslist.length - 1].id + 1;
     }
+    const genre = genres.map((genArray) => genArray.genre);
+
     this.bookslist = [
       ...this.bookslist,
       {
@@ -23,13 +25,12 @@ class LibraryStore {
         author: book.author,
         title: book.title,
         slug: book.title.split(" ").join("-"),
-        genre: book.genre,
+        genre: book.genre, //genres,
         available: true,
         borrowedBy: [],
       },
     ];
-
-    // console.log(this.memberslist);
+    console.log(genre);
   };
   addMember = (member) => {
     let newID;
