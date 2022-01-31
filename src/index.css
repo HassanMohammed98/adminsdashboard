@@ -6,26 +6,5 @@ code {
     monospace;
 } */
 /* cards of members and books: */
-.card {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  display: grid;
-  font-family: "Trebuchet MS", sans-serif;
-  height: 200px;
-  margin: 20px auto;
-  width: 350px;
-  color: black;
-}
 
-.front {
-  display: block;
-  font-size: 15px;
-  text-transform: capitalize;
-  text-align: center;
-  font-size: x-large;
-}
-.personal-intro {
-  margin-top: 40px;
-  background-color: #b0c4de;
-  padding: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* -------------------------- EMPTY-------------------- */

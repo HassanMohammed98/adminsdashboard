@@ -6,12 +6,18 @@ import Nav from "./Nav";
 import MemberDisp from "./MemberDisp";
 
 const BookDetail = () => {
+  // take the slag from routing-------------------:
   const { slug } = useParams();
+
+  // find the book = the slag in the data  -----------------------:
   const book = libraryStore.bookslist.find((book) => book.slug === slug);
+
+  // map and find by id the member and display it in memberDisp------------:
   const bookHistory = book.borrowedBy.map((borrower) => {
     let m = libraryStore.memberslist.find((member) => member.id === borrower);
     return <MemberDisp key={m.id} member={m} />;
   });
+  // checking membership && numbers of books---------------:
   const checkMembership = (membership) => {
     if (membership === "silver") {
       return 2;
@@ -21,6 +27,8 @@ const BookDetail = () => {
       return 5;
     }
   };
+  // ----------------------------------------------------
+  // add borrow member by onClick ---------------------:
   const membersBorrow = libraryStore.memberslist
     .filter(
       (member) =>
@@ -39,16 +47,20 @@ const BookDetail = () => {
         </span>
       </li>
     ));
+  // -----------------------------------------------
+  //  if book false go home:----------------------------
   if (!book) {
     return <Navigate to="/" />;
   } else {
     return (
       <>
+        {/* background img */}
         <img
           className="home-background"
           src={"../images/webBackground.jpg"}
           alt="Home img not working."
         />
+        {/* home layout and the card container */}
         <div className="cutoff home-layout">
           <Nav />
           <div className="row-test">
@@ -57,35 +69,33 @@ const BookDetail = () => {
                 <p>Title : {book.title}</p>
                 <p>Author : {book.author}</p>
                 <p>Genre : {book.genre}</p>
-                {
-                  book.available ? (
-                    <div className="btn-group">
-                      <div className="borrow-label">Borrow Book : </div>
-                      <button
-                        type="button"
-                        className="btn btn-info dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                      >
-                        Members
-                      </button>
-                      <ul className="dropdown-menu">{membersBorrow}</ul>
-                    </div>
-                  ) : (
+                {/* if so show the available button: --------------------*/}
+                {book.available ? (
+                  <div className="btn-group">
+                    <div className="borrow-label">Borrow Book : </div>
                     <button
                       type="button"
-                      className="btn btn-info"
-                      onClick={() => {
-                        libraryStore.returnBook(book.id);
-                      }}
+                      className="btn btn-info dropdown-toggle"
+                      data-bs-toggle="dropdown"
                     >
-                      Return Book
+                      Members
                     </button>
-                  )
-                  //   <>Available</>
-                  // ) : (
-                  //   <>not Available</>
-                }
+                    <ul className="dropdown-menu">{membersBorrow}</ul>
+                  </div>
+                ) : (
+                  /*  show the return book button:---------------------*/
+                  <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={() => {
+                      libraryStore.returnBook(book.id);
+                    }}
+                  >
+                    Return Book
+                  </button>
+                )}
               </div>
+              {/* show book History */}
               <div className="m-5">
                 <h5>Borrowed History :</h5>
                 {bookHistory}

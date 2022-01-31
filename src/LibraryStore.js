@@ -1,4 +1,3 @@
-import React from "react";
 import members from "./LibraryFE-main/members";
 import books from "./LibraryFE-main/books";
 import { makeAutoObservable } from "mobx";
@@ -9,10 +8,12 @@ class LibraryStore {
   constructor() {
     makeAutoObservable(this);
   }
+  // -------------------------- borrowing function-----------------------:
   borrowing = (book, id) => {
     book.available = !book.available;
     book.borrowedBy = [...book.borrowedBy, id];
   };
+  // -------------------------- borrowingBook function-----------------------:
   borrowBook = (id, bookID) => {
     this.bookslist.forEach(
       (book) => book.id === bookID && this.borrowing(book, id)
@@ -24,9 +25,10 @@ class LibraryStore {
           bookID,
         ]);
     });
-    console.log(this.bookslist);
-    console.log(this.memberslist);
+    // console.log(this.bookslist);
+    // console.log(this.memberslist);
   };
+  // -------------------------- return book function-----------------------:
   returnBook = (id) => {
     this.bookslist.forEach(
       (book) => book.id === id && (book.available = !book.available)
@@ -38,6 +40,7 @@ class LibraryStore {
     });
     // console.log(this.bookslist);
   };
+  // -------------------------- addBook function-----------------------:
   addBook = (book, genres) => {
     let newID;
     if (this.bookslist.length === 0) {
@@ -59,8 +62,9 @@ class LibraryStore {
         borrowedBy: [],
       },
     ];
-    console.log(genre);
+    // console.log(genre);
   };
+  // -------------------------- addMember function-----------------------:
   addMember = (member) => {
     let newID;
     if (this.memberslist.length === 0) {

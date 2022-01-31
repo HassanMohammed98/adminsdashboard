@@ -1,10 +1,4 @@
-.home-background {
-  position: absolute;
-  z-index: -2;
-  opacity: 0.65;
-  width: 100vw;
-  height: 100vh;
-}
+/*----------------------- NAV CHANGES CSS : ---------------------------------*/
 .navbar-position {
   position: absolute;
   display: inline-block;
@@ -43,14 +37,21 @@
   align-items: center;
   width: 100vw;
 }
+/* ------------END NAV CSS ^ -------------------------------- */
+/* -----------------HOME CSS : ----------------------------------- */
+.home-background {
+  position: absolute;
+  z-index: -2;
+  opacity: 0.65;
+  width: 100vw;
+  height: 100vh;
+}
 .borrow-label {
   margin-right: 20px;
   display: flex;
   align-items: center;
 }
-.search-display {
-  margin-top: 60px;
-}
+
 .home-layout {
   /* overflow: auto */
   width: 100vw;
@@ -61,11 +62,6 @@
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-/* .example { */
-/* -ms-overflow-style: none;  IE and Edge */
-/* scrollbar-width: none;  Firefox */
-/* } */
 .home-header {
   margin-top: 50px;
   width: 60vw;
@@ -85,13 +81,7 @@
   padding-left: 30px;
   border-radius: 20px;
 }
-.inner-search input {
-  width: 50vw;
-  margin: 30px;
-  padding: 8px;
-  padding-left: 30px;
-  border-radius: 20px;
-}
+
 .home-links {
   align-self: center;
   padding-top: 30px;
@@ -126,15 +116,34 @@
   padding: 20px;
   background-color: #f4ece2b4;
 }
+/* -------------------END HOME CSS ^ -------------------------*/
+/* ------------------SEARCH CSS : ----------------------------- */
+.inner-search input {
+  width: 50vw;
+  margin: 30px;
+  padding: 8px;
+  padding-left: 30px;
+  border-radius: 20px;
+}
+.search-display {
+  margin-top: 60px;
+}
+.inner-search {
+  position: absolute;
+  top: -100px;
+  width: 100%;
+}
+/*---------------- END SEARCH ^ --------------------------- */
+/*----------  FOR  BOOKS DISPLAYS --------------------------- */
 .auto-scolling {
   overflow: auto;
 }
 .cutoff {
   overflow: hidden;
 }
+/* show booksDisplayed: */
 .container-display {
   background-color: #e9e0c8a2;
-
   position: relative;
   text-align: center;
   align-items: center;
@@ -153,11 +162,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.inner-search {
-  position: absolute;
-  top: -100px;
-  width: 100%;
-}
+/* for Create book modal: */
 .add-list {
   display: flex;
   flex-direction: row-reverse;
@@ -183,6 +188,8 @@
   flex-direction: column;
   position: relative;
 }
+/*-------------- END HOME ^ ---------------------------------- */
+/* ---------------- TAP -------------------------------------- */
 .tab {
   background-color: rgb(228, 228, 228);
   display: flex;
@@ -202,10 +209,7 @@
 .tab:hover {
   background-color: mediumblue;
 }
-.genre {
-  padding: 0px;
-  margin: 0px;
-}
+
 .close-tab {
   margin-left: 8px;
   /* margin-right: 2px; */
@@ -219,3 +223,34 @@
   border-radius: 50%;
   border: none;
 }
+/* ----------- END TAP --------------------------------------- */
+/* ------------ GENRE ----------------------------------------- */
+.genre {
+  padding: 0px;
+  margin: 0px;
+}
+/* -------------- CARDS  ----------------------------------------- */
+.card {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: grid;
+  font-family: "Trebuchet MS", sans-serif;
+  height: 200px;
+  margin: 20px auto;
+  width: 350px;
+  color: black;
+}
+
+.front {
+  display: block;
+  font-size: 15px;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: x-large;
+}
+.personal-intro {
+  margin-top: 40px;
+  background-color: #b0c4de;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* ------------------ END CARDS ^  ----------------------------------------- */
