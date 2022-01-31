@@ -11,8 +11,8 @@ const MemberDisp = ({ member }) => {
         <h4>membership: {member.membership}</h4>
       </div> */}
 
-      <div class="card front">
-        <div class="personal-intro">
+      <div className="card front">
+        <div className="personal-intro">
           <h3>
             {member.firstName} {member.lastName}
           </h3>

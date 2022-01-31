@@ -10,12 +10,12 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const books = libraryStore.bookslist
     .filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
-    .map((book) => <BookDisp key={book.id} book={book} />);
+    .map((book) => <BookDisp key={`b_id_${book.id}`} book={book} />);
   const members = libraryStore.memberslist
     .filter((member) =>
       member.firstName.toLowerCase().includes(query.toLowerCase())
     )
-    .map((member) => <MemberDisp key={member.id} member={member} />);
+    .map((member) => <MemberDisp key={`m_id_${member.id}`} member={member} />);
   const searchResult = books.concat(members);
   return (
     <>
@@ -24,7 +24,7 @@ const Home = () => {
         src={"./homeBackground.jpg"}
         alt="Home img not working."
       />
-      <div className="column home-layout">
+      <div className="column home-layout auto-scolling">
         <div className="column home-header">
           <>Books of Glory</>
           <SearchBar setQuery={setQuery} />

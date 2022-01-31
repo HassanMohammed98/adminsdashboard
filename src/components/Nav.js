@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Nav() {
   return (
     <nav
-      className="navbar navbar-expand-lg  text-uppercase navbar-position"
+      className="navbar navbar-expand-lg navbar-dark text-uppercase navbar-position sticky-top"
       id="mainNav"
     >
       <div className="Nav-display">

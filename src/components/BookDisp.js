@@ -8,8 +8,8 @@ const BookDisp = ({ book }) => {
         <h1>title: {book.title}</h1>
         <h4>author: {book.author}</h4>
       </div> */}
-      <div class="card">
-        <div class="personal-intro">
+      <div className="card">
+        <div className="personal-intro">
           <h4>title: {book.title}</h4>
           <h6>author: {book.author}</h6>
         </div>
