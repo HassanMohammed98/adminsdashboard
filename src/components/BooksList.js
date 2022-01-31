@@ -11,8 +11,19 @@ const BooksList = () => {
 
   //  show book by book.id------------------------------:
   const booksDisplayed = libraryStore.bookslist
-    .filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
-    .map((book) => <BookDisp key={book.id} book={book} />);
+    .filter(
+      (book) =>
+        book.title.toLowerCase().includes(query.toLowerCase().trim()) ||
+        book.author.toLowerCase().includes(query.toLowerCase().trim()) ||
+        book.genre.find((gen) =>
+          gen.toLowerCase().includes(query.toLowerCase().trim())
+        )
+    )
+    .map((book) => (
+      <div className="test b-card">
+        <BookDisp key={book.id} book={book} />
+      </div>
+    ));
 
   return (
     <>
@@ -27,17 +38,18 @@ const BooksList = () => {
         <Nav />
         <div className="row-test">
           <div className="column">
-            {/* search bar: ----------------------------*/}
-            <div className="inner-search">
-              <SearchBar setQuery={setQuery} />
+            <div>
+              {/* search bar: ----------------------------*/}
+              <div className="inner-search">
+                <SearchBar setQuery={setQuery} />
+              </div>
+              {/* books and scroll by them: ------------------------*/}
+              <div className="auto-scolling container-display">
+                <div className="row-wrap card-layout">{booksDisplayed}</div>
+              </div>
             </div>
-
             <div className="add-list">
               <CreateBookModal />
-            </div>
-            {/* books and scroll by them: ------------------------*/}
-            <div className="auto-scolling container-display">
-              {booksDisplayed}
             </div>
           </div>
         </div>

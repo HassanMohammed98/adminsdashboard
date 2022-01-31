@@ -15,7 +15,11 @@ const BookDetail = () => {
   // map and find by id the member and display it in memberDisp------------:
   const bookHistory = book.borrowedBy.map((borrower) => {
     let m = libraryStore.memberslist.find((member) => member.id === borrower);
-    return <MemberDisp key={m.id} member={m} />;
+    return (
+      <div className="test b-card">
+        <MemberDisp key={m.id} member={m} />
+      </div>
+    );
   });
   // checking membership && numbers of books---------------:
   const checkMembership = (membership) => {
@@ -65,10 +69,16 @@ const BookDetail = () => {
           <Nav />
           <div className="row-test">
             <div className="auto-scolling container-display">
-              <div className="mb-1 m-3">
-                <p>Title : {book.title}</p>
-                <p>Author : {book.author}</p>
-                <p>Genre : {book.genre}</p>
+              <div className="detail mb-1 m-3">
+                <p>
+                  <u>Title :</u> {book.title}
+                </p>
+                <p>
+                  <u>Author :</u> {book.author}
+                </p>
+                <p>
+                  <u>Genre :</u> {book.genre}
+                </p>
                 {/* if so show the available button: --------------------*/}
                 {book.available ? (
                   <div className="btn-group">
@@ -97,8 +107,8 @@ const BookDetail = () => {
               </div>
               {/* show book History */}
               <div className="m-5">
-                <h5>Borrowed History :</h5>
-                {bookHistory}
+                <h5 className="detail">Borrowed History :</h5>
+                <div className="row-wrap card-layout">{bookHistory}</div>
               </div>
             </div>
           </div>

@@ -11,7 +11,11 @@ const MemberDetail = () => {
   );
   const booksBorrowed = libraryStore.bookslist
     .filter((book) => member.currentlyBorrowedBooks.includes(book.id))
-    .map((book) => <BookDisp key={book.id} book={book} />);
+    .map((book) => (
+      <div className="test m-card">
+        <BookDisp key={book.id} book={book} />
+      </div>
+    ));
   if (!member) {
     return <Navigate to="/" />;
   } else {
@@ -26,16 +30,19 @@ const MemberDetail = () => {
           <Nav />
           <div className="row-test">
             <div className="auto-scolling container-display">
-              <p className="mb-1 m-3">
-                First Name : {member.firstName}
-                <br />
-                Last Name : {member.lastName}
-                <br />
-                Membership: {member.membership}
-                <br />
-                Currently Borrowed Books :
-              </p>
-              <div>{booksBorrowed}</div>
+              <div className="detail mb-1 m-3">
+                <p>
+                  <u>First Name :</u> {member.firstName}
+                </p>
+                <p>
+                  <u>Last Name :</u> {member.lastName}
+                </p>
+                <p>
+                  <u>Membership:</u> {member.membership}
+                </p>
+                <p>Currently Borrowed Books :</p>
+              </div>
+              <div className="row-wrap card-layout">{booksBorrowed}</div>
             </div>
           </div>
         </div>

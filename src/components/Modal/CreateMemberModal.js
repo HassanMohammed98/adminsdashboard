@@ -27,7 +27,7 @@ const CreateMemberModal = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add New member to the Library
+        Add New member
       </Button>
 
       <Modal show={isOpen} onHide={handleClose}>

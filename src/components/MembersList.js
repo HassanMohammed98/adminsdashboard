@@ -10,10 +10,17 @@ import SearchBar from "./SearchBar";
 const MembersList = () => {
   const [query, setQuery] = useState("");
   const membersDisplayed = libraryStore.memberslist
-    .filter((member) =>
-      member.firstName.toLowerCase().includes(query.toLowerCase())
+    .filter(
+      (member) =>
+        member.firstName.toLowerCase().includes(query.toLowerCase().trim()) ||
+        member.membership.toLowerCase().includes(query.toLowerCase().trim()) ||
+        member.lastName.toLowerCase().includes(query.toLowerCase().trim())
     )
-    .map((member) => <MemberDisp key={member.id} member={member} />);
+    .map((member) => (
+      <div className="test m-card">
+        <MemberDisp key={member.id} member={member} />
+      </div>
+    ));
   return (
     <>
       <img
@@ -25,14 +32,16 @@ const MembersList = () => {
         <Nav />
         <div className="row-test">
           <div className="column">
-            <div className="inner-search">
-              <SearchBar setQuery={setQuery} />
+            <div>
+              <div className="inner-search">
+                <SearchBar setQuery={setQuery} />
+              </div>
+              <div className="auto-scolling container-display">
+                <div className="row-wrap card-layout">{membersDisplayed}</div>
+              </div>
             </div>
             <div className="add-list">
               <CreateMemberModal />
-            </div>
-            <div className="auto-scolling container-display">
-              {membersDisplayed}
             </div>
           </div>
         </div>

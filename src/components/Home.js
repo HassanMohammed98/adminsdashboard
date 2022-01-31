@@ -11,15 +11,33 @@ const Home = () => {
 
   // -----------------------------------books = -------------------------------------------------------:
   const books = libraryStore.bookslist
-    .filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
-    .map((book) => <BookDisp key={`b_id_${book.id}`} book={book} />);
+    .filter(
+      (book) =>
+        book.title.toLowerCase().includes(query.toLowerCase().trim()) ||
+        book.author.toLowerCase().includes(query.toLowerCase().trim()) ||
+        book.genre.find((gen) =>
+          gen.toLowerCase().includes(query.toLowerCase().trim())
+        )
+    )
+    .map((book) => (
+      <div className="test b-card">
+        <BookDisp key={`b_id_${book.id}`} book={book} />
+      </div>
+    ));
 
   // -----------------------------------members = ---------------------------------------------------:
   const members = libraryStore.memberslist
-    .filter((member) =>
-      member.firstName.toLowerCase().includes(query.toLowerCase())
+    .filter(
+      (member) =>
+        member.firstName.toLowerCase().includes(query.toLowerCase().trim()) ||
+        member.membership.toLowerCase().includes(query.toLowerCase().trim()) ||
+        member.lastName.toLowerCase().includes(query.toLowerCase().trim())
     )
-    .map((member) => <MemberDisp key={`m_id_${member.id}`} member={member} />);
+    .map((member) => (
+      <div className="test b-card">
+        <MemberDisp key={`m_id_${member.id}`} member={member} />
+      </div>
+    ));
   // ------------------------add books to members--------------------------:
   const searchResult = books.concat(members);
 
@@ -62,7 +80,11 @@ const Home = () => {
           </Link>
         </div>
         {/* ------------------------search display: ------------------------------------- */}
-        <div className="search-display">{query !== "" && searchResult}</div>
+        <div className="search-display">
+          {query !== "" && (
+            <div className="row-wrap card-layout">{searchResult}</div>
+          )}
+        </div>
       </div>
     </>
   );

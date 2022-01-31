@@ -10,7 +10,7 @@ function Nav() {
       <div className="Nav-display">
         <div>
           <NavLink className="nav-link-home" to="/">
-            Library Home
+            Books of Glory
           </NavLink>
         </div>
         <div className="collapse navbar-collapse" id="navbarResponsive">

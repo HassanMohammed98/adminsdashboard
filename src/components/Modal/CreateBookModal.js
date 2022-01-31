@@ -59,7 +59,7 @@ const CreateBookModal = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add New Book to the Library
+        Add New Book
       </Button>
 
       <Modal show={isOpen} onHide={handleClose}>
